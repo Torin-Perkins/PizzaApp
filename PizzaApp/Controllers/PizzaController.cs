@@ -21,7 +21,7 @@ namespace PizzaApp.Controllers
 
         public IActionResult List()
         {
-            //Instantiate the Pizza View Model
+            // Instantiate the Pizza View Model
             PizzaListViewModel pizzaListViewModel = new PizzaListViewModel();
             // Fill in the pizza's data point of the view model from the repository
             pizzaListViewModel.Pizzas = _pizzaRepository.AllPizzas;

@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using PizzaApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("DataSource=pizzas.sqlite"));
 
 var app = builder.Build();
 
