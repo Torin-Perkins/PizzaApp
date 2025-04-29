@@ -6,16 +6,20 @@ namespace PizzaApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPizzaRepository _pizzaRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPizzaRepository pizzaRepository)
         {
-            _logger = logger;
+            _pizzaRepository = pizzaRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                PizzasOfTheWeek = _pizzaRepository.PizzasOfTheWeek
+            };
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()
